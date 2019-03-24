@@ -1,0 +1,37 @@
+{
+  "name": "cryptogen_service",
+  "version": "1.0.0",
+  "description": "Micro-service for generating crypto materials.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dpk28/cryptogen_service.git"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "Deepak Bansal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dpk28/cryptogen_service/issues"
+  },
+  "homepage": "https://github.com/Dpk28/cryptogen_service#readme",
+  "devDependencies": {
+    "eslint": "^5.15.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19",
+    "path": "^0.12.7",
+    "selfsigned": "^1.10.4",
+    "swagger-ui-express": "^4.0.2",
+    "template-file": "^3.0.1",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1"
+  }
+}
