@@ -11,4 +11,4 @@ const taskSchema = new Schema({
     usePushEach: true
 });
 
-module.exports = mongoose.model('task', taskSchema);
+module.exports = mongoose.model('Task', taskSchema);
