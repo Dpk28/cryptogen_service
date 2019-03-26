@@ -7,18 +7,20 @@ const config = require('../../config.json'),
 const loggerName = "[Controller]: ";
 
 exports.generateCrypto = function (req, res) {
+    let ordererName = req.body.orderer_name;
+    let ordererDomain = req.body.orderer_domain;
+    let ordererHostname = req.body.orderer_hostname;
     let orgName = req.body.org_name;
-    let domain = req.body.domain;
-    let country = req.body.country;
+    let orgDomain = req.body.org_domain;
 
-    if (!orgName || !domain || !country) {
+    if (!ordererName || !ordererDomain || !ordererHostname || !orgName || !orgDomain) {
         res.status(400).json({
             success: false,
             message: 'Invalid parameters'
         });
     }
 
-    services.generateCrypto(orgName, domain, country).then(result => {
+    services.generateCrypto(ordererName, ordererDomain, ordererHostname, orgName, orgDomain).then(result => {
     	res.status(202).json({
             success: true,
             message: result
@@ -61,7 +63,7 @@ exports.getCryptoRef = async function (req, res) {
     }
 
     try {
-    	let refID = await services.getTaskStatus(taskID);
+    	let refID = await services.getCryptoRef(taskID);
     	res.status(200).send(refID);
     } catch(err) {
     	res.status(400).json({
@@ -70,3 +72,27 @@ exports.getCryptoRef = async function (req, res) {
         });
     }
 }
+
+exports.updateTask = async function (req, res) {
+    let taskID = req.body.task_id;
+    let status = req.body.status;
+    let refID = req.body.ref_id;
+
+    if (!taskID || !status || !refID) {
+        res.status(400).json({
+            success: false,
+            message: 'invalid parameters'
+        });
+    }
+
+    try {
+        let response = await services.updateTask(taskID, status, refID);
+        res.status(200).send(response);
+    } catch(err) {
+        res.status(400).json({
+            success: false,
+            message: err
+        });
+    }
+}
+

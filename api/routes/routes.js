@@ -11,4 +11,7 @@ module.exports = function (app) {
 
     app.route('/api/v1/referance/:task_id')
        .get(controller.getCryptoRef);
+
+    app.route('/api/v1/task/update')
+       .post(controller.updateTask);
 };
