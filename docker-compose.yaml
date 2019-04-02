@@ -1,0 +1,31 @@
+version: "2"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+
+  cryptogen_service:
+    container_name: cryptogen
+    restart: always
+    image: cryptogen_service:1.0
+    ports:
+      - "4000:4000"
+    links:
+      - mongo
+      - kms_service
+
+  kms_service:
+    container_name: kms_service
+    restart: always
+    image: kms_service:1.0
+    environment:
+      - VAULT_TOKEN=s.BK51uUtOrYw8z0Lj2EBxCTKJ
+      - VAULT_URL=http://127.0.0.0:8300
+      - VAULT_API_VERSION=v1
+    ports:
+      - "4001:4001"
+      - "9229:9229"

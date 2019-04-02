@@ -4,7 +4,7 @@
   "description": "Micro-service for generating crypto materials.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --inspect=0.0.0.0 server.js" 
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "archiver": "^3.0.0",
+    "axios": "^0.18.0",
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
@@ -31,6 +32,8 @@
     "kafka-node": "^4.0.2",
     "mongoose": "^5.4.19",
     "path": "^0.12.7",
+    "recursive-readdir": "^2.2.2",
+    "rimraf": "^2.6.3",
     "selfsigned": "^1.10.4",
     "shelljs": "^0.8.3",
     "swagger-ui-express": "^4.0.2",

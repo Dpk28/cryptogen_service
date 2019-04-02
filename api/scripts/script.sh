@@ -1,2 +1,2 @@
-CONFIG_PATH="$0"
-cryptogen generate --config=$CONFIG_PATH/crypto-config.yaml
+CONFIG_PATH=$1
+$CONFIG_PATH/cryptogen generate --config=$CONFIG_PATH/crypto-config.yaml

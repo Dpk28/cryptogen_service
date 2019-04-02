@@ -1,5 +1,7 @@
 {
 	"host" : "localhost",
 	"port" : "4000",
-	"db" : "mongodb://localhost:27017/cryptogen"
+	"db" : "mongodb://localhost:27017/cryptogen",
+	"kmsUrl": "http://localhost:4001/api",
+	"kmsApiVersion": "v1"
 }
