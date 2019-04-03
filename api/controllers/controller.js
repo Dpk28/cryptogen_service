@@ -6,7 +6,7 @@ const config = require('../../config.json'),
    
 const loggerName = "[Controller]: ";
 
-exports.generateCrypto = function (req, res) {
+exports.generateCrypto = async function (req, res) {
     let ordererName = req.body.orderer_name;
     let ordererDomain = req.body.orderer_domain;
     let ordererHostname = req.body.orderer_hostname;
@@ -20,17 +20,18 @@ exports.generateCrypto = function (req, res) {
         });
     }
 
-    services.generateCrypto(ordererName, ordererDomain, ordererHostname, orgName, orgDomain).then(result => {
-    	res.status(202).json({
+    try {
+        let result = await services.generateCrypto(ordererName, ordererDomain, ordererHostname, orgName, orgDomain);
+        res.status(202).json({
             success: true,
             message: result
         });
-    }).catch(err => {
-    	res.status(400).json({
+    } catch(err) {
+        res.status(400).json({
             success: false,
             message: err
         });
-    })
+    }
 }
 
 exports.getTaskStatus = async function (req, res) {
