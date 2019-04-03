@@ -249,6 +249,7 @@ function concatenateAssetFiles(files) {
                 let contents = fs.readFileSync(file, 'utf8');
                 concatenateContent[arr[arr.length - 1]] = contents;
             } catch (err) {
+                logger.error(loggerName, err);
                 reject(err.message);
             }
         });
@@ -273,6 +274,7 @@ function decodeAsset(data) {
             let decodeData = buff.toString('ascii');
             resolve(JSON.parse(decodeData));
         } catch (err) {
+            logger.error(loggerName, err);
             reject(err.message);
         }
     });
