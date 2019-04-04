@@ -1,6 +1,9 @@
 # Cryptogen micro-service
 Cyptogen micro-service for generating crypto assets using fabric cryptogen tool.
 
+### Swagger API 
+ * http://aca555066563a11e98b450ab0abea834-78908697.ap-south-1.elb.amazonaws.com:4000/api-docs
+
 ### Prerequisites
 
 To run this Crytogen API server, you'll need to:
