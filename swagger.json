@@ -1,3 +1,145 @@
 {
-	
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the cryptogen micro-service for generating crypto assets from hyperledger fabric cryptogen tool.",
+    "version": "1.0.0",
+    "title": "Cryptogen Service",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "dpkbansal28@yahoo.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "aca555066563a11e98b450ab0abea834-78908697.ap-south-1.elb.amazonaws.com:4000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "asset",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/generate": {
+      "post": {
+        "tags": [
+          "asset"
+        ],
+        "summary": "Generate crypto assets from cryptogen tool",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Parameters required to generate crypto assets",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Asset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/status/{task_id}": {
+      "get": {
+        "tags": [
+          "asset"
+        ],
+        "summary": "Finds status by task ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_id",
+            "required": true,
+            "type": "string",
+            "description": "Task ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/referance/{task_id}": {
+      "get": {
+        "tags": [
+          "asset"
+        ],
+        "summary": "Finds status by task ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_id",
+            "required": true,
+            "description": "Task ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Asset": {
+      "type": "object",
+      "required": [
+        "orderer_name",
+        "orderer_domain",
+        "orderer_hostname",
+        "org_name",
+        "org_domain"
+      ],
+      "properties": {
+        "orderer_name": {
+          "type": "string"
+        },
+        "orderer_domain": {
+          "type": "string"
+        },
+        "orderer_hostname": {
+          "type": "string"
+        },
+        "org_name": {
+          "type": "string"
+        },
+        "org_domain": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
 }
